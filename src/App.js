@@ -1,17 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState} from "react";
+
+import Image from "./conpoments/Image";
+import ImageRequest from "./conpoments/useImageRequest";
+import Header from "./conpoments/Header";
+import loadingIcon from "./loadingIcon.gif";
 import './App.css';
 
+import {Alert, AlertTitle } from '@material-ui/lab';
+
+
+
+
 function App() {
+  
+  
+  const [query, setQuery] = useState('')
+  const [pageNumber, setPageNumber] = useState(1)
+
+  const {loading, error, images} = ImageRequest(query, pageNumber)
+ 
+
+  
+  
+
+  function handleSearchInput(e) {
+    e.preventDefault();
+    setQuery(e.target.value);
+    setPageNumber(1);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+    <div>
+      <Header handleSearch={handleSearchInput} />
+      <Image ImageData={images}  />
      
-      </header>
+
+      <div>{loading && <img src={loadingIcon} alt="loading" className="loadingIcon"/>}</div>
+      <div>{error &&     <Alert severity="error">
+  <AlertTitle>Error</AlertTitle>
+  Error unable to  retrieve data — <strong>Try again later!</strong>
+</Alert>}</div>
+
+  
     </div>
   );
 }
