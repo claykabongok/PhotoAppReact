@@ -6,7 +6,7 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import IconButton from "@material-ui/core/IconButton";
 import ImageSearchIcon from "@material-ui/icons/ImageSearch";
 import Avatar from "@material-ui/core/Avatar";
-
+import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -21,7 +21,56 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CommentIcon from "@material-ui/icons/Comment";
 import Badge from "@material-ui/core/Badge";
 import "./Image.css";
-import ImageStyles from "./ImagesStyles";
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper,
+   
+  },
+  imageGrid: {
+    margin: "auto 20px",
+  },
+  
+  gridList: {
+    width: 1200,
+    height: 900,
+  },
+  icon: {
+    color: "rgba(255, 255, 255, 0.54)",
+  },
+  xlarge: {
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+  },
+  small: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+  margin: {
+    margin: theme.spacing(1),
+  },
+  imageContent: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    margin: "auto",
+    maxWidth: "90%",
+  },
+  image: {
+    width: 128,
+    height: 128,
+  },
+  img: {
+    margin: "auto",
+    display: "block",
+    maxWidth: "100%",
+    maxHeight: "100%",
+  },
+}));
 
 export default function Image({ImageData}){
   const [selectImageDetails, setSelectImageDetails] = useState('')
@@ -45,7 +94,7 @@ export default function Image({ImageData}){
       setViewSelectedImage(false)
    
   };
-  const classes = ImageStyles();
+  const classes = useStyles();
  
     
     const imagedata = ImageData.map((image) => (
