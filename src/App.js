@@ -4,11 +4,8 @@ import Image from "./conpoments/Image";
 import ImageRequest from "./conpoments/useImageRequest";
 import Header from "./conpoments/Header";
 import loadingIcon from "./loadingIcon.gif";
-import './App.css';
-
 import {Alert, AlertTitle } from '@material-ui/lab';
-
-
+import './App.css';
 
 
 function App() {

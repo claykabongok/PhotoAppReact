@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function useBookSearch(query, pageNumber) {
+export default function useImageRequest(query, pageNumber) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [images, setImages] = useState([])

@@ -76,6 +76,9 @@ export default function Image({ImageData}){
   const [selectImageDetails, setSelectImageDetails] = useState('')
   const [viewSelectedImage, setViewSelectedImage] = useState(false)
   
+   
+ 
+  
   function getSeletedImage(id) {
     if (id != null) {
       const selectedImage = ImageData.filter(
@@ -130,6 +133,8 @@ export default function Image({ImageData}){
     ));
 
     if (viewSelectedImage) {
+      let commentValue= (selectImageDetails[0].comments >= 1) ? selectImageDetails[0].comments : 0 ;
+      console.log("Comment: "+commentValue);
       return (
         <React.Fragment>
           <Dialog
@@ -192,8 +197,10 @@ export default function Image({ImageData}){
                     </Grid>
 
                     <Grid item xs={2}>
+                     
                       <Badge
-                        badgeContent={selectImageDetails[0].comments}
+                        // badgeContent={(selectImageDetails[0].comments != null) ? selectImageDetails[0].comments: 0 }  
+                        badgeContent={commentValue}  
                         max={9999999}
                       >
                         <CommentIcon color="primary" />
